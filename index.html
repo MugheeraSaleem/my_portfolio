@@ -1017,13 +1017,22 @@
         .cert-logo {
             width: 72px;
             height: 48px;
-            object-fit: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             display: block;
             background: #ffffff;
             border-radius: 8px;
             padding: 0;
             box-sizing: border-box;
             overflow: hidden;
+        }
+
+        .cert-logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .cert-logos .cert-logo:only-child {
@@ -2117,12 +2126,15 @@
             const logoWrap = document.createElement("div");
             logoWrap.className = "cert-logos";
             logoData.forEach((logo) => {
+                const logoBox = document.createElement("div");
+                logoBox.className = "cert-logo";
                 const img = document.createElement("img");
-                img.className = "cert-logo";
+                img.className = "cert-logo-img";
                 img.src = logo.src;
                 img.alt = logo.alt;
                 img.loading = "lazy";
-                logoWrap.appendChild(img);
+                logoBox.appendChild(img);
+                logoWrap.appendChild(logoBox);
             });
 
             card.classList.add("certification-card");
