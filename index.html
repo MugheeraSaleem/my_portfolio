@@ -651,6 +651,23 @@
             background: #00bbbb;
         }
 
+        .contact-open {
+            display: inline-block;
+            padding: 10px 22px;
+            border-radius: 22px;
+            border: 1px solid #00ffff;
+            color: #00ffff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            white-space: nowrap;
+        }
+
+        .contact-open:hover {
+            color: #001414;
+            background: #00ffff;
+        }
+
         /* ===== SECTION STYLE ===== */
 
         section {
@@ -804,6 +821,74 @@
 
         .card li {
             margin: 6px 0;
+        }
+
+        .contact-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .contact-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 18px;
+            border-radius: 20px;
+            background: #00ffff;
+            color: #001414;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            white-space: nowrap;
+        }
+
+        .contact-button:hover {
+            background: #00bbbb;
+        }
+
+        .contact-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2100;
+            padding: 24px;
+        }
+
+        .contact-modal:target {
+            display: flex;
+        }
+
+        .contact-modal .modal-content {
+            background: #0f0f0f;
+            border: 1px solid #00ffff;
+            border-radius: 12px;
+            padding: 22px;
+            box-shadow: 0 0 24px #00ffff44;
+            text-align: center;
+            width: min(90vw, 420px);
+        }
+
+        .contact-modal p {
+            margin: 0 0 16px;
+            color: #bfbfbf;
+        }
+
+        .contact-modal .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            font-size: 20px;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 8px 12px;
+            border: 1px solid #00ffff;
+            border-radius: 6px;
+            background: rgba(0, 0, 0, 0.4);
         }
 
         .projects-header {
@@ -1156,6 +1241,7 @@
             </a>
 
             <a href="cv.pdf" class="cv-button" download>Download CV</a>
+            <a href="#contact-modal" class="contact-open">Contact Me</a>
         </div>
 
         <div class="intro-subtext">ML | NLP | Computer Vision | LLMs</div>
@@ -1210,6 +1296,17 @@
             <div id="profile-modal" class="profile-modal" aria-hidden="true">
                 <a href="#" class="modal-close" aria-label="Close profile picture">Close</a>
                 <img class="modal-image" src="profile.png" alt="Profile picture">
+            </div>
+
+            <div id="contact-modal" class="contact-modal" aria-hidden="true">
+                <a href="#" class="modal-close" aria-label="Close contact">Close</a>
+                <div class="modal-content">
+                    <p>Reach out directly:</p>
+                    <div class="contact-actions">
+                        <a class="contact-button" href="tel:+92XXXXXXXXXX">Call: +92-XXX-XXXXXXX</a>
+                        <a class="contact-button" href="mailto:youremail@example.com">Email: youremail@example.com</a>
+                    </div>
+                </div>
             </div>
 
             <!-- STUDY -->
