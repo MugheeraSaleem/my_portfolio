@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mugheera Saleem | Portfolio</title>
+
+    <style>
+        /* ===== GLOBAL ===== */
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --side-gap: 72px;
+            --panel-width: 280px;
+            --main-width: 900px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0d0d0d;
+            color: #d9d9d9;
+        }
+
+        /* ===== NAVBAR ===== */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #111;
+            padding: 15px 0;
+            z-index: 1000;
+            box-shadow: 0 0 10px #00ffff33;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #00ffff;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #00ffff;
+        }
+
+        /* ===== BANNER ===== */
+
+        .banner {
+            margin-top: 60px;
+            height: 300px;
+            background: url("D:/Portfolio Website/banner.png") center/cover no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ===== PROFILE AREA ===== */
+
+        .profile-section {
+            text-align: center;
+            margin-top: -80px;
+        }
+
+        /* ===== INTRO LAYOUT ===== */
+
+        /* MAIN INTRO LAYOUT */
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: var(--panel-width) var(--main-width);
+            grid-template-rows: auto auto;
+            column-gap: var(--side-gap);
+            row-gap: 2px;
+            align-items: center;
+            padding: 30px var(--side-gap) 0;
+            max-width: calc(var(--panel-width) + var(--main-width) + (var(--side-gap) * 2));
+            margin: 0 auto;
+        }
+
+        /* PROFILE IMAGE */
+
+        .profile-pic {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 4px solid #00b3b3;
+            background: url("profile.png") center/cover no-repeat;
+            box-shadow: 0 0 20px #00b3b3;
+        }
+
+        .profile-link {
+            display: inline-block;
+        }
+
+        .profile-link:focus-visible {
+            outline: 2px solid #00ffff;
+            outline-offset: 6px;
+            border-radius: 50%;
+        }
+
+        .profile-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 24px;
+        }
+
+        .profile-modal:target {
+            display: flex;
+        }
+
+        .profile-modal .modal-image {
+            max-width: min(80vw, 640px);
+            max-height: 80vh;
+            width: auto;
+            height: auto;
+            border-radius: 8px;
+            border: 3px solid #00b3b3;
+            box-shadow: 0 0 30px #00b3b3;
+            display: block;
+        }
+
+        .profile-modal .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            font-size: 20px;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 8px 12px;
+            border: 1px solid #00ffff;
+            border-radius: 6px;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: var(--panel-width) 1fr;
+            gap: var(--side-gap);
+            align-items: start;
+            padding: 0 var(--side-gap);
+            max-width: calc(var(--panel-width) + var(--main-width) + (var(--side-gap) * 2));
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .content-main section {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .content-main {
+            justify-self: start;
+            width: min(100%, var(--main-width));
+            max-width: 100%;
+            min-width: 0;
+        }
+
+        .skills-float {
+            position: sticky;
+            top: 120px;
+            width: var(--panel-width);
+            max-height: calc(100vh - 120px);
+            overflow: auto;
+            background: #141414;
+            border-radius: 12px;
+            padding: 20px 18px 18px;
+            box-shadow: 0 0 12px #00ffff22;
+            border: 1px solid #00ffff33;
+            margin-top: 40px;
+        }
+
+        .skills-float::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+        }
+
+        .skills-float {
+            scrollbar-width: none;
+        }
+
+        .skills-float h3 {
+            margin: 0 0 18px;
+            color: #00FDFD;
+            font-size: 34px;
+            letter-spacing: 1px;
+            line-height: 1.1;
+            text-shadow:
+                0 0 1px #0cd9d9,
+                0 0 1px #21b6b6,
+                0 0 1px #21abab;
+        }
+
+        .skills-float h4 {
+            margin: 14px 0 6px;
+            color: #ffffff;
+            font-size: 16px;
+        }
+
+        .skills-float p {
+            margin: 0;
+            color: #bfbfbf;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .skills-float .skills-card {
+            background: transparent;
+            box-shadow: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        @media (max-width: 1400px) {
+            :root {
+                --side-gap: 44px;
+            }
+
+            .intro-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto auto;
+                row-gap: 22px;
+                padding: 24px var(--side-gap) 0;
+                max-width: none;
+            }
+
+            .intro-text {
+                grid-column: 1;
+                grid-row: 1;
+                justify-self: center;
+                padding-left: 0;
+                margin-top: 0;
+                margin-bottom: 8px;
+            }
+
+            .profile-link {
+                grid-column: 1;
+                grid-row: 2;
+                justify-self: center;
+                margin-bottom: 0;
+                margin-top: 18px;
+            }
+
+            .intro-subtext {
+                grid-column: 1;
+                grid-row: 3;
+                justify-self: center;
+                padding-left: 0;
+                margin-top: 0;
+            }
+
+            .cv-button {
+                position: static;
+                transform: none;
+                justify-self: center;
+                margin-top: 0;
+                grid-column: 1;
+                grid-row: 4;
+            }
+
+            .hero-right {
+                grid-column: 1;
+                grid-row: 3;
+                justify-self: center;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                padding: 0 var(--side-gap);
+                grid-template-areas:
+                    "main"
+                    "skills";
+            }
+
+            .content-main {
+                grid-area: main;
+                width: 100%;
+            }
+
+            section {
+                padding: 50px var(--side-gap);
+            }
+
+            .skills-float {
+                position: static;
+                grid-area: skills;
+                width: 100%;
+                max-height: none;
+                margin-top: 24px;
+                margin-bottom: 28px;
+                display: block;
+                overflow: visible;
+                box-sizing: border-box;
+                padding: 0;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+            }
+
+            .skills-float,
+            .content-main section {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .skills-float .card {
+                margin: 0;
+            }
+
+            .skills-float h3 {
+                font-size: 34px;
+                letter-spacing: 2px;
+                text-shadow:
+                    0 0 1px #0cd9d9,
+                    0 0 1px #21b6b6,
+                    0 0 1px #21abab;
+            }
+
+            .skills-float::before {
+                content: "";
+                display: block;
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%);
+                border-bottom: 3px dashed #00ffff;
+                box-shadow:
+                    0 0 8px #00ffff,
+                    0 0 16px #00ffff,
+                    0 0 24px #00ffff;
+                width: 50%;
+                margin: 0 0 50px;
+            }
+
+            .skills-float .skills-card {
+                background: #141414;
+                box-shadow: 0 0 10px #00ffff22;
+                padding: 20px;
+                border-radius: 10px;
+                margin: 20px 0 0;
+            }
+        }
+
+        @media (max-width: 720px) {
+            :root {
+                --side-gap: 28px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                gap: 10px 16px;
+            }
+
+            .intro-text {
+                font-size: 30px;
+                line-height: 1.05;
+                margin-bottom: 10px;
+            }
+
+            .intro-subtext {
+                font-size: 16px;
+            }
+
+            section h2 {
+                font-size: 28px;
+            }
+
+            .content-grid,
+            section {
+                padding-left: var(--side-gap);
+                padding-right: var(--side-gap);
+            }
+
+            .project-modal .modal-content {
+                width: min(92vw, 900px);
+            }
+        }
+
+
+        /* ===== HEARTBEAT HI ===== */
+
+        .intro-text {
+            font-size: 60px;
+            font-weight: bold;
+            color: white;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+            line-height: 1.2;
+            padding-bottom: 6px;
+            grid-column: 1 / 3;
+            grid-row: 1;
+            justify-self: start;
+            padding-left: calc(var(--panel-width) / 2);
+            align-self: center;
+            margin-bottom: 0;
+            z-index: 1;
+            margin-top: -20px;
+        }
+
+        .hi {
+            display: inline-block;
+            animation: heartbeat 1.2s infinite;
+            line-height: 1;
+        }
+
+        .typing-text {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid white;
+            width: 22ch;
+            line-height: 1.2;
+            padding-bottom: 4px;
+            clip-path: inset(0 100% 0 0);
+            will-change: clip-path;
+
+            animation:
+                typing 4s steps(22, end) infinite,
+                blink .8s infinite;
+        }
+
+        .intro-subtext {
+            grid-column: 1 / 3;
+            grid-row: 1;
+            font-size: 30px;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: 2px;
+            justify-self: start;
+            padding-left: calc(var(--panel-width) / 2);
+            align-self: end;
+            margin-top: 0;
+            z-index: 1;
+        }
+
+        .intro-text,
+        .intro-subtext {
+            line-height: 1.05;
+        }
+
+        .hero-right {
+            grid-column: 2;
+            grid-row: 1;
+            justify-self: end;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+        }
+
+        /* typing */
+
+        @keyframes typing {
+            0% {
+                clip-path: inset(0 100% 0 0);
+            }
+
+            40% {
+                clip-path: inset(0 0 0 0);
+            }
+
+            60% {
+                clip-path: inset(0 0 0 0);
+            }
+
+            100% {
+                clip-path: inset(0 100% 0 0);
+            }
+        }
+
+        /* cursor */
+
+        @keyframes blink {
+            50% {
+                border-color: transparent
+            }
+        }
+
+        /* heartbeat */
+
+        @keyframes heartbeat {
+            0% {
+                opacity: 1;
+                transform: scale(1)
+            }
+
+            25% {
+                opacity: .3;
+                transform: scale(.9)
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.1)
+            }
+
+            75% {
+                opacity: .4;
+                transform: scale(.95)
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1)
+            }
+        }
+
+        .cv-button {
+            margin-top: 20px;
+            display: inline-block;
+            padding: 12px 25px;
+            background: #00ffff;
+            color: black;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            align-self: center;
+            margin-top: 0;
+            white-space: nowrap;
+        }
+
+        .profile-link {
+            margin-bottom: 16px;
+        }
+
+        .cv-button:hover {
+            background: #00bbbb;
+        }
+
+        /* ===== SECTION STYLE ===== */
+
+        section {
+            padding: 60px var(--side-gap);
+            position: relative;
+        }
+
+        /* Neon dashed divider */
+
+        section::after {
+            content: "";
+            border-bottom: 3px dashed #00ffff;
+            box-shadow:
+                0 0 8px #00ffff,
+                0 0 16px #00ffff,
+                0 0 24px #00ffff;
+        }
+
+        section::after {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+        }
+
+        section:last-of-type::after {
+            display: none;
+        }
+
+        section h2 {
+            color: #00FDFD;
+            margin-bottom: 18px;
+            margin-top: 0;
+            font-size: 34px;
+            /* text-align: center; */
+            letter-spacing: 2px;
+
+            text-shadow:
+                0 0 1px #0cd9d9,
+                0 0 1px #21b6b6,
+                0 0 1px #21abab;
+        }
+
+        /* ===== CONTENT CARDS ===== */
+
+        .card {
+            background: #141414;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #00ffff22;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #ffffff;
+        }
+
+        .card p {
+            color: #bfbfbf;
+        }
+
+        .study-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+        }
+
+        .study-header h3 {
+            margin: 0;
+        }
+
+        .study-duration {
+            font-size: 18px;
+            font-weight: normal;
+            color: #bfbfbf;
+            white-space: nowrap;
+        }
+
+        .study-meta {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 4px;
+        }
+
+        .study-location {
+            font-size: 16px;
+            font-weight: normal;
+            color: #bfbfbf;
+            white-space: nowrap;
+        }
+
+        .study-degree {
+            margin-top: 6px;
+        }
+
+        .study-meta+.study-degree {
+            margin-top: 0;
+        }
+
+        .study-link {
+            color: #00ffff;
+            text-decoration: none;
+            border-bottom: 1px dashed #00ffff;
+            padding-bottom: 2px;
+            transition: 0.3s;
+        }
+
+        .study-link:hover {
+            color: #00bbbb;
+            border-bottom-color: #00bbbb;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+        }
+
+        .experience-header h3 {
+            margin: 0;
+        }
+
+        .experience-duration {
+            font-size: 18px;
+            font-weight: normal;
+            color: #bfbfbf;
+            white-space: nowrap;
+        }
+
+        .experience-meta {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 4px;
+        }
+
+        .experience-location {
+            font-size: 16px;
+            font-weight: normal;
+            color: #bfbfbf;
+            white-space: nowrap;
+        }
+
+        .card ul {
+            margin: 8px 0 0 18px;
+            color: #bfbfbf;
+        }
+
+        .card li {
+            margin: 6px 0;
+        }
+
+        .projects-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+        }
+
+        .projects-header h3 {
+            margin: 0;
+        }
+
+        .project-media-btn {
+            margin-left: auto;
+            padding: 8px 14px;
+            border-radius: 20px;
+            border: 1px solid #00ffff;
+            color: #00ffff;
+            background: transparent;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .project-media-btn:hover {
+            color: #001414;
+            background: #00ffff;
+        }
+
+        .project-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2500;
+            padding: 24px;
+        }
+
+        .project-modal.active {
+            display: flex;
+        }
+
+        .project-modal .modal-content {
+            position: relative;
+            width: min(85vw, 900px);
+            background: #0f0f0f;
+            border: 1px solid #00ffff;
+            border-radius: 12px;
+            padding: 18px;
+            box-shadow: 0 0 24px #00ffff44;
+        }
+
+        .project-modal .media-frame {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+            max-height: 70vh;
+            overflow: hidden;
+            border-radius: 10px;
+            background: #0b0b0b;
+        }
+
+        .project-modal img,
+        .project-modal video {
+            max-width: 100%;
+            max-height: 70vh;
+            width: auto;
+            height: auto;
+            display: block;
+        }
+
+        .project-modal .media-caption {
+            margin-top: 10px;
+            color: #bfbfbf;
+            text-align: center;
+        }
+
+        .project-modal .modal-close {
+            position: fixed;
+            top: 20px;
+            right: 24px;
+            font-size: 20px;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 8px 12px;
+            border: 1px solid #00ffff;
+            border-radius: 6px;
+            background: rgba(0, 0, 0, 0.4);
+            cursor: pointer;
+        }
+
+        .project-modal .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            border: 1px solid #00ffff;
+            background: rgba(0, 0, 0, 0.5);
+            color: #00ffff;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .project-modal .nav-btn.prev {
+            left: 10px;
+        }
+
+        .project-modal .nav-btn.next {
+            right: 10px;
+        }
+
+        .publication-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+        }
+
+        .publication-title {
+            margin: 0;
+            color: #ffffff;
+        }
+
+        .publication-authors {
+            margin: 6px 0 0;
+            color: #bfbfbf;
+            font-size: 16px;
+        }
+
+        .publication-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+            margin-top: 6px;
+            color: #bfbfbf;
+            font-size: 16px;
+        }
+
+        .publication-link {
+            color: #00ffff;
+            text-decoration: none;
+            border-bottom: 1px dashed #00ffff;
+            padding-bottom: 2px;
+            white-space: nowrap;
+            transition: 0.3s;
+        }
+
+        .publication-link:hover {
+            color: #00bbbb;
+            border-bottom-color: #00bbbb;
+        }
+
+        .certification-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+        }
+
+        .certification-title {
+            margin: 0;
+            color: #ffffff;
+        }
+
+        .certification-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+            margin-top: 6px;
+            color: #bfbfbf;
+            font-size: 16px;
+        }
+
+        .certification-link {
+            color: #00ffff;
+            text-decoration: none;
+            border-bottom: 1px dashed #00ffff;
+            padding-bottom: 2px;
+            white-space: nowrap;
+            transition: 0.3s;
+        }
+
+        .certification-link:hover {
+            color: #00bbbb;
+            border-bottom-color: #00bbbb;
+        }
+
+        .certification-card {
+            display: flex;
+            align-items: stretch;
+            gap: 18px;
+        }
+
+        .cert-logos {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            flex: 0 0 160px;
+            gap: 10px;
+            align-self: stretch;
+            padding: 0;
+        }
+
+        .cert-logo {
+            width: 72px;
+            height: 48px;
+            object-fit: cover;
+            display: block;
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .cert-logos .cert-logo:only-child {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cert-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        @media (max-width: 1400px) {
+            .intro-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto;
+                row-gap: 24px;
+            }
+
+            .intro-text {
+                grid-column: 1;
+                grid-row: 1;
+                justify-self: center;
+                padding-left: 0;
+                margin-top: 0;
+            }
+
+            .hero-right {
+                grid-column: 1;
+                grid-row: 2;
+                justify-self: center;
+            }
+
+            .intro-subtext {
+                grid-column: 1;
+                grid-row: 3;
+                justify-self: center;
+                padding-left: 0;
+                margin-top: 0;
+            }
+
+            .profile-link {
+                margin: 0;
+            }
+
+            .cv-button {
+                margin-top: 14px;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .intro-text {
+                font-size: 30px;
+                line-height: 1.05;
+            }
+
+            .intro-subtext {
+                font-size: 16px;
+            }
+
+            .hero-right {
+                gap: 16px;
+            }
+
+            .intro-grid {
+                row-gap: 22px;
+            }
+        }
+
+        #viewport-indicator {
+            position: fixed;
+            right: 12px;
+            bottom: 12px;
+            background: #111;
+            color: #00ffff;
+            border: 1px solid #00ffff33;
+            border-radius: 6px;
+            padding: 6px 10px;
+            font-size: 12px;
+            z-index: 3000;
+            box-shadow: 0 0 10px #00ffff22;
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#study">Study</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#awards">Awards</a></li>
+            <li><a href="#volunteer">Volunteer</a></li>
+        </ul>
+    </nav>
+
+    <!-- BANNER -->
+
+    <div class="banner"></div>
+
+    <div class="intro-grid">
+
+        <div class="intro-text">
+            <span class="hi">Hi!</span>
+            <span class="typing-text"> Mugheera Saleem here!</span>
+        </div>
+
+        <div class="hero-right">
+            <a class="profile-link" href="#profile-modal" aria-label="Open profile picture">
+                <div class="profile-pic"></div>
+            </a>
+
+            <a href="cv.pdf" class="cv-button" download>Download CV</a>
+        </div>
+
+        <div class="intro-subtext">ML | NLP | Computer Vision | LLMs</div>
+
+    </div>
+
+    <div class="content-grid">
+        <aside class="skills-float" aria-label="Skills and tools">
+            <h3>Skills & Tools</h3>
+            <div class="card skills-card">
+                <h4>Programming & Scripting</h4>
+                <p>Python, Flutter, Kotlin, C++, Arduino</p>
+                <h4>AI/ML Frameworks & Techniques</h4>
+                <p>PyTorch, TensorFlow, OpenCV, Scikit-learn, LLMs, Hugging Face, LangChain, Feature Engineering, Data
+                    Management</p>
+                <h4>Computer Vision & NLP</h4>
+                <p>Real-time CV Pipelines, YOLO, Edge AI, Ollama, LoRA, LLM pretraining, LLM finetuning, Tokenizer
+                    training, RAG pipelines, Adaptive Hardware Integration</p>
+                <h4>DevOps, Deployment & Version Control</h4>
+                <p>GCP, Decker, Kubernetes, GKE, Kubeflow, FastAPI, Firebase, Git, GitHub</p>
+                <h4>Research & Documentation</h4>
+                <p>Literature Review, Experiment Design, Technical Writing</p>
+            </div>
+        </aside>
+
+        <div class="content-main">
+            <section id="about">
+                <h2>About</h2>
+
+                <div class="card">
+                    <p>
+                        Machine Learning Engineer with strong industry and research experience in building, training,
+                        and
+                        deploying production-ready ML systems. Specialized in Computer Vision, LLMs, and agentic AI,
+                        with
+                        hands-on
+                        experience in tool calling, RAG-based agents, and fine-tuning language models. Proven ability to
+                        design
+                        models from scratch
+                        and deploy scalable pipelines using Kubeflow, KServe, Docker, and GCP. Experienced in delivering
+                        end
+                        to
+                        end ML
+                        solutions, from data processing and experimentation to cloud deployment and integration into
+                        real-world
+                        applications.
+                    </p>
+                </div>
+
+            </section>
+
+            <div id="profile-modal" class="profile-modal" aria-hidden="true">
+                <a href="#" class="modal-close" aria-label="Close profile picture">Close</a>
+                <img class="modal-image" src="profile.png" alt="Profile picture">
+            </div>
+
+            <!-- STUDY -->
+
+            <section id="study">
+                <h2>Study</h2>
+
+                <div class="card">
+                    <div class="study-header">
+                        <h3>National University of Science & Technology (<a class="study-link"
+                                href="https://nust.edu.pk/" target="_blank" rel="noopener">NUST</a>)</h3>
+                        <span class="study-duration">Sept 2021 - Aug 2025</span>
+                    </div>
+                    <div class="study-meta">
+                        <span class="study-location">Islamabad, Pakistan</span>
+                    </div>
+                    <p class="study-degree">MS | Robotics & Intelligent Machine Engineering</p>
+                    <p>GPA: 3.75/4.0</p>
+                </div>
+
+                <div class="card">
+                    <div class="study-header">
+                        <h3>Air University (<a class="study-link" href="https://www.au.edu.pk/" target="_blank"
+                                rel="noopener">AU</a>)</h3>
+                        <span class="study-duration">Oct 2016 - Aug 2020</span>
+                    </div>
+                    <div class="study-meta">
+                        <span class="study-location">Islamabad, Pakistan</span>
+                    </div>
+                    <p class="study-degree">BS | Mechatronics Engineering</p>
+                    <p>GPA: 3.03/4.0</p>
+                </div>
+
+            </section>
+
+            <!-- EXPERIENCE -->
+
+            <section id="experience">
+                <h2>Experience</h2>
+
+                <div class="card">
+                    <div class="experience-header">
+                        <h3>Full Stack LLM Engineer</h3>
+                        <span class="experience-duration">Aug 2025 - Present</span>
+                    </div>
+                    <div class="experience-meta">
+                        <span class="experience-location">Lahore, Pakistan</span>
+                    </div>
+                    <p>Devaxius (Self Employed)</p>
+                    <ul>
+                        <li>Developing a local LLM enabled mobile application with RAG capabilities running locally on
+                            mobile
+                            devices
+                            without the Internet, introducing privacy and safety for users.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="experience-header">
+                        <h3>Computer Vision Engineer</h3>
+                        <span class="experience-duration">July 2024 - June 2025</span>
+                    </div>
+                    <div class="experience-meta">
+                        <span class="experience-location">Islamabad, Pakistan</span>
+                    </div>
+                    <p>School of Mechanical & Manufacturing Engineering (SMME), NUST</p>
+                    <ul>
+                        <li>Surveyed multiple diseased sugarcane, wheat & rice fields to collect multispectral aerial
+                            imagery
+                            through UAVs.
+                            Data was subsequently cleaned and prepared by creating orthomosaics using QGIS, Pix4D and
+                            python
+                            code.</li>
+                        <li>Data labeling was performed for semantic segmentation of diseased/pest infected regions in
+                            the
+                            fields.</li>
+                        <li>Multiple semantic segmentation models like UNet, Deeplabv3, SegFormer, Mask2Former, BiSeNet,
+                            FastSCNN were
+                            trained on the labeled data to do a comparative study and best performing model was
+                            reported.</li>
+                    </ul>
+                </div>
+
+
+                <div class="card">
+                    <div class="experience-header">
+                        <h3>ML & NLP Engineer</h3>
+                        <span class="experience-duration">Nov 2023 - July 2024</span>
+                    </div>
+                    <div class="experience-meta">
+                        <span class="experience-location">Islamabad (Remote), Pakistan</span>
+                    </div>
+                    <p>Parbat</p>
+                    <ul>
+                        <li>Developed a chatbot with tool use and RAG capabilities for retrieving company documents to
+                            provide
+                            better
+                            customer support. The chatbot also provided recommendations through the chat to the users.
+                            The
+                            chatbot was
+                            deployed on cloud and integrated in the mobile app through the generated API.</li>
+                        <li>Developed and trained a collaborative filtering based product recommendation model using
+                            customer
+                            interaction
+                            data collected in the database. The model was deployed on cloud and customer’s UI was fed
+                            with
+                            recommendations by calling the endpoint of the model.</li>
+                    </ul>
+                </div>
+
+
+                <div class="card">
+                    <div class="experience-header">
+                        <h3>Computer Vision Engineer</h3>
+                        <span class="experience-duration">Jan 2023 - Jan 2024</span>
+                    </div>
+                    <div class="experience-meta">
+                        <span class="experience-location">Islamabad, Pakistan</span>
+                    </div>
+                    <p>Aerial Robotics Lab, SINES, NUST</p>
+                    <ul>
+                        <li>Developed a pipeline for retrieving camera feeds from a portable throwable surveillance
+                            device that
+                            was designed
+                            and developed inhouse. The frames were obtained near real-time on a specific computer with
+                            the
+                            developed
+                            application installed on it and connected to the local network.</li>
+                        <li>The collected frames were then stitched to create a photosphere for a panoramic view. The
+                            panorama
+                            image was
+                            passed through a computer vision model for human pose estimation. All the frames were saved
+                            in the
+                            backend for
+                            later playback.</li>
+                        <li>The project was aimed at armed forces and rescue workers for improved situational awareness
+                            across
+                            obstacles and
+                            inside compounds.</li>
+                    </ul>
+                </div>
+
+
+                <div class="card">
+                    <div class="experience-header">
+                        <h3>Teaching Assistant</h3>
+                        <span class="experience-duration">Sep 2023 - Jan 2024</span>
+                    </div>
+                    <div class="experience-meta">
+                        <span class="experience-location">Islamabad, Pakistan</span>
+                    </div>
+                    <p>School of Mechanical & Manufacturing Engineering (SMME), NUST</p>
+                    <ul>
+                        <li>Teaching Assistant for the subject of Deep Learning in (Robotics & AI Department) School of
+                            Mechanical and
+                            Manufacturing Engineering (SMME). Helping prepare quizzes, assignments, projects, and exams
+                            and
+                            helping the
+                            supervisor with grading.</li>
+                    </ul>
+                </div>
+
+
+                <div class="card">
+                    <div class="experience-header">
+                        <h3>Mobile App Developer (Flutter)</h3>
+                        <span class="experience-duration">Sep 2023 - Jan 2024</span>
+                    </div>
+                    <div class="experience-meta">
+                        <span class="experience-location">Islamabad, Pakistan</span>
+                    </div>
+                    <p>Fazaia Medical College</p>
+                    <ul>
+                        <li>Developed and deployed an android mobile application developed in Flutter, for monitoring of
+                            pregnant women
+                            who came to the Gynecology & Obstetrics ward and provide them with diet plans and counseling
+                            videos
+                            and
+                            monitor if they are following the courses.</li>
+                    </ul>
+                </div>
+
+            </section>
+
+            <!-- PROJECTS -->
+
+            <section id="projects">
+                <h2>Projects</h2>
+
+                <div class="card">
+                    <div class="projects-header">
+                        <h3>Local LLM enabled Android Application</h3>
+                        <button class="project-media-btn" type="button"
+                            data-media="video:media/LLM_App_Demo.mp4:Offline Assistant App Demo">Media</button>
+                    </div>
+                    <p>Tools: LLMs (Llama), Kotlin, C++, Git</p>
+                    <ul>
+                        <li>Developing an android application with RAG and LLMs running locally on the android device to
+                            provide
+                            secure
+                            and internet free assistance to users. The application and LLM context management is handled
+                            in
+                            Kotlin while the
+                            LLM backend depends on llama.cpp. The app will be deployed as an android appbundle on Google
+                            Play
+                            Store.</li>
+                    </ul>
+                </div>
+
+
+                <div class="card">
+                    <div class="projects-header">
+                        <h3>Chatbot Agent Development for a Retail App</h3>
+                    </div>
+                    <p>Tools: LLMs (Llama), Python, Flutter, GCP, Firebase, Docker, Git, k8s, Kubeflow (KServe)</p>
+                    <ul>
+                        <li>Developed a RAG based chatbot for customers with latest inventory information, product
+                            return policy
+                            and
+                            product recommendations using the recommendation engine as an external tool. This model was
+                            also
+                            deployed on
+                            GCP using KServe. It was incorporated in the flutter app through an endpoint.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="projects-header">
+                        <h3>Product Recommendation System</h3>
+                    </div>
+                    <p>Tools: LLMs (Llama), Python, Flutter, GCP, Firebase, Docker, Git, k8s, Kubeflow (KServe)</p>
+                    <ul>
+                        <li>I also developed a collaborative filtering based product recommendation system for an online
+                            retail
+                            platform. The
+                            model was trained locally and was deployed on GCP using KServe. The application made calls
+                            to the
+                            generated
+                            endpoint for inference.</li>
+                    </ul>
+                </div>
+
+
+                <div class="card">
+                    <div class="projects-header">
+                        <h3>Image Segmentation Novel Architecture Development</h3>
+                        <button class="project-media-btn" type="button"
+                            data-media="image:media/city results.png:Image Segmentation Results on Cityscapes Dataset Samples|image:media/camvid results.png:Image Segmentation Results on CamVid Dataset Samples|image:media/camvid comp.png:AdaNet Comparison mIoU% with Pretrained Deeplabv3|image:media/flops.png:AdaNet FLOPs Reduction During Training">Media</button>
+                    </div>
+                    <p>Tools: Computer Vision, Deep Learning, Python, TensorFlow, PyTorch</p>
+                    <ul>
+                        <li>Developed AdaNet, a novel encoder-decoder architecture for semantic segmentation that
+                            combines
+                            spectral
+                            attention with Convolutional Layers and skip connections to balance global context modeling
+                            with
+                            fine-grained
+                            spatial detail and allowing adaptive learnable feature map downsampling. The approach
+                            achieved
+                            comparative
+                            accuracy on the Cityscapes benchmark, demonstrating performance like state-of-the-art
+                            methods with
+                            up to 20
+                            times reduced FLOPs and activation memory.</li>
+                    </ul>
+                </div>
+
+
+                <div class="card">
+                    <div class="projects-header">
+                        <h3>Computer Vision Pipeline, GUI Development for a Throwable Surveillance Camera</h3>
+                        <button class="project-media-btn" type="button"
+                            data-media="image:media/ball1.png:Throwable Surveillance Camera Face 1|image:media/ball2.png:Throwable Surveillance Camera Face 2">Media</button>
+                    </div>
+                    <p>Tools: Computer Vision, Deep Learning, Arduino, PyInstaller, tkinter</p>
+                    <ul>
+                        <li>Developed a windows application using PyInstaller for a throwable surveillance camera
+                            device. The
+                            app handled
+                            multiple cameras, their frame acquisition in windows through a local network, frame
+                            stitching and
+                            photosphere
+                            development and human pose estimation using AI. All the frames were saved as a mission in
+                            the
+                            backend. The GUI
+                            displayed photospheres with estimated poses in near real time and was developed with
+                            tkinter.</li>
+                    </ul>
+                </div>
+
+
+                <div class="card">
+                    <div class="projects-header">
+                        <h3>Computer Vision Pipeline Development for Autonomous Disease Detection in Crops</h3>
+                        <button class="project-media-btn" type="button"
+                            data-media="image:media/RGB & NDVI samples.png:RGB and NDVI Collected Crop Aerial Images|image:media/sugarcane_results.png:Sugarcane Pest Affected Area Detection Results|image:media/99 field.png:Sugarcane Field#99 RGB Orthomosaic|image:media/Field_99_map.png:Generated Sugarcane Field#99 Pest Affected Area Heat-Map">Media</button>
+                    </div>
+                    <p>Tools: Computer Vision, Deep Learning, Pix4D, QGIS</p>
+                    <ul>
+                        <li>Led a remote sensing and perception project for UAV-based crop monitoring using
+                            multispectral
+                            imagery (Funded
+                            by HEC); managed data collection, preprocessing, segmentation labelling, and orthomosaic
+                            generation
+                            in Pix4D
+                            and QGIS, and trained semantic segmentation models like DeepLabv3, UNet, SegFormer,
+                            Mask2Former for
+                            disease
+                            detection. The best performing model was reported.</li>
+                    </ul>
+                </div>
+
+
+                <div class="card">
+                    <div class="projects-header">
+                        <h3>Mobile Application Development for Prenatal Care for Women</h3>
+                        <button class="project-media-btn" type="button"
+                            data-media="video:media/MUMS_App_Demo.mp4:MUMS App Demo|video:media/MUMS_App_Diet_Chart_Implementation.mp4:MUMS App Diet Chart Implementation|image:media/MUMS_login.png:MUMS App Login Screen|image:media/MUMS_dashboard.png:MUMS App Dashboard Screen|image:media/MUMS_activity.png:MUMS App Activity Screen|image:media/MUMS_playlist.png:MUMS App Playlist Screen|image:media/MUMS_playlist2.png:MUMS App 2nd Playlist Screen">Media</button>
+                    </div>
+                    <p>Tools: Flutter, Android Application Development, Firebase, GCP, Android Studio, Git</p>
+                    <ul>
+                        <li>I developed a mobile app with user auth and profiles, real-time database and data logging
+                            for user
+                            journey on the
+                            counselling course and diet plans. Included videos and playback. Developed frontend and
+                            backend
+                            both. The app
+                            was also deployed on Google Play for prenatal care for women in Pakistan.</li>
+                    </ul>
+                </div>
+
+
+            </section>
+
+
+
+
+            <!-- PUBLICATIONS -->
+
+            <section id="publications">
+                <h2>Publications</h2>
+
+                <div class="card">
+                    <div class="publication-header">
+                        <h3 class="publication-title">An Adaptive Spectral Dynamic Feature Map Semantic
+                            Segmentation Model</h3>
+                    </div>
+                    <p class="publication-authors">Mugheera Saleem, Dr. Zaib Ali, S. M. Ammar Shah, Dr. Muhammad Javad
+                        Khan</p>
+                    <div class="publication-meta">
+                        <span>Elsevier: Pattern Recognition · 2026 (Under Review)</span>
+                        <!-- <a class="publication-link" href="https://example.com" target="_blank" rel="noopener">Publication</a> -->
+                    </div>
+                </div>
+
+
+
+                <div class="card">
+                    <div class="publication-header">
+                        <h3 class="publication-title">Design and Fabrication of a Six DOF Gantry Robot
+                            forWelding Applications.</h3>
+                    </div>
+                    <p class="publication-authors">Mugheera Saleem, Saad Jameel, Aitazaz Hassan, Z. H. Khan</p>
+                    <div class="publication-meta">
+                        <span>2024 ASU International Conference in Emerging Technologies for Sustainability and
+                            Intelligent Systems (ICETSIS) · 2024</span>
+                        <a class="publication-link" href="https://ieeexplore.ieee.org/document/10459371" target="_blank"
+                            rel="noopener">Publication</a>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- CERTIFICATIONS -->
+
+            <section id="certifications">
+                <h2>Certifications</h2>
+
+
+                <div class="card">
+                    <div class="certification-header">
+                        <h3 class="certification-title">
+                            Fine Tuning Language Models of The LLM Course</h3>
+                    </div>
+                    <div class="certification-meta">
+                        <span>Hugging Face · Nov 2025</span>
+                        <a class="certification-link"
+                            href="https://cdn-uploads.huggingface.co/production/uploads/noauth/XYJMReWiLdZepjn6y2lKo.webp"
+                            target="_blank" rel="noopener">Certificate</a>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="certification-header">
+                        <h3 class="certification-title">
+                            AI Agents Fundamentals</h3>
+                    </div>
+                    <div class="certification-meta">
+                        <span>Hugging Face · Nov 2025</span>
+                        <a class="certification-link"
+                            href="https://cdn-uploads.huggingface.co/production/uploads/noauth/5QSQ_HQ0IEgDX48DD8p8p.webp"
+                            target="_blank" rel="noopener">Certificate</a>
+                    </div>
+                </div>
+
+
+
+                <div class="card">
+                    <div class="certification-header">
+                        <h3 class="certification-title">
+                            Custom and Distributed training with TensorFlow</h3>
+                    </div>
+                    <div class="certification-meta">
+                        <span>Coursera | Deeplearning.AI · Aug 2023</span>
+                        <a class="certification-link"
+                            href="https://www.coursera.org/account/accomplishments/certificate/R9YUEFQRS6B9"
+                            target="_blank" rel="noopener">Certificate</a>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="certification-header">
+                        <h3 class="certification-title">
+
+                            Machine Learning Data Lifecycle in Production</h3>
+                    </div>
+                    <div class="certification-meta">
+                        <span>Coursera | Deeplearning.AI · May 2023</span>
+                        <a class="certification-link"
+                            href="https://www.coursera.org/account/accomplishments/certificate/HUDBNEY8P3WD"
+                            target="_blank" rel="noopener">Certificate</a>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="certification-header">
+                        <h3 class="certification-title">
+                            The Complete Flutter Development Bootcamp with Dart</h3>
+                    </div>
+                    <div class="certification-meta">
+                        <span>Udemy · Oct 2022</span>
+                        <a class="certification-link"
+                            href="https://www.udemy.com/certificate/UC-4288122e-9bcf-49ed-ae5e-c6e0cc810bac/"
+                            target="_blank" rel="noopener">Certificate</a>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="certification-header">
+                        <h3 class="certification-title">
+
+                            Google Cloud Fundamentals: Core Infrastructure</h3>
+                    </div>
+                    <div class="certification-meta">
+                        <span>Coursera | Google CLoud · Dec 2023</span>
+                        <a class="certification-link"
+                            href="https://www.coursera.org/account/accomplishments/certificate/4JU324W2UR75"
+                            target="_blank" rel="noopener">Certificate</a>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="certification-header">
+                        <h3 class="certification-title">
+                            Prediction and Control with Function Approximation</h3>
+                    </div>
+                    <div class="certification-meta">
+                        <span>Coursera | University of Alberta · Jan 2024</span>
+                        <a class="certification-link"
+                            href="https://www.coursera.org/account/accomplishments/certificate/KWJF3CGMFKCJ"
+                            target="_blank" rel="noopener">Certificate</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="certification-header">
+                        <h3 class="certification-title">
+
+
+                            Sample-based Learning Methods</h3>
+                    </div>
+                    <div class="certification-meta">
+                        <span>Coursera | University of Alberta · Oct 2023</span>
+                        <a class="certification-link"
+                            href="https://www.coursera.org/account/accomplishments/certificate/EXZMGMH7FETA"
+                            target="_blank" rel="noopener">Certificate</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="certification-header">
+                        <h3 class="certification-title">
+
+                            Fundamentals of Reinforcement Learning</h3>
+                    </div>
+                    <div class="certification-meta">
+                        <span>Coursera | University of Alberta · Oct 2023</span>
+                        <a class="certification-link"
+                            href="https://www.coursera.org/account/accomplishments/certificate/D4WM7ZKGE5VU"
+                            target="_blank" rel="noopener">Certificate</a>
+                    </div>
+                </div>
+
+
+
+                <div class="card">
+                    <div class="certification-header">
+                        <h3 class="certification-title">
+                            Introduction to Machine Learning in Production</h3>
+                    </div>
+                    <div class="certification-meta">
+                        <span>Coursera | Deeplearning.AI · Apr 2023</span>
+                        <a class="certification-link"
+                            href="https://www.coursera.org/account/accomplishments/certificate/FUAFPBFTQPRC"
+                            target="_blank" rel="noopener">Certificate</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="certification-header">
+                        <h3 class="certification-title">
+                            TensorFlow: Data and Deployment</h3>
+                    </div>
+                    <div class="certification-meta">
+                        <span>Coursera | Deeplearning.AI · Feb 2023</span>
+                        <a class="certification-link"
+                            href="https://www.coursera.org/account/accomplishments/specialization/EH6EKLAS3S8U"
+                            target="_blank" rel="noopener">Certificate</a>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="certification-header">
+                        <h3 class="certification-title">
+
+                            Advanced Deployment Scenarios with TensorFlow</h3>
+                    </div>
+                    <div class="certification-meta">
+                        <span>Coursera | Deeplearning.AI · Feb 2023</span>
+                        <a class="certification-link"
+                            href="https://www.coursera.org/account/accomplishments/verify/NXUWPY224N5Y" target="_blank"
+                            rel="noopener">Certificate</a>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="certification-header">
+                        <h3 class="certification-title">
+                            Data Pipelines with TensorFlow Data Services</h3>
+                    </div>
+                    <div class="certification-meta">
+                        <span>Coursera | Deeplearning.AI · Dec 2022</span>
+                        <a class="certification-link"
+                            href="https://www.coursera.org/account/accomplishments/verify/CLTF8Y46EAA6" target="_blank"
+                            rel="noopener">Certificate</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="certification-header">
+                        <h3 class="certification-title">
+                            Device-based Models with TensorFlow Lite</h3>
+                    </div>
+                    <div class="certification-meta">
+                        <span>Coursera | Deeplearning.AI · Oct 2022</span>
+                        <a class="certification-link"
+                            href="https://www.coursera.org/account/accomplishments/verify/TB7KYE53SB2X" target="_blank"
+                            rel="noopener">Certificate</a>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="certification-header">
+                        <h3 class="certification-title">
+                            Browser-based Models with TensorFlow.js</h3>
+                    </div>
+                    <div class="certification-meta">
+                        <span>Coursera | Deeplearning.AI · Oct 2022</span>
+                        <a class="certification-link"
+                            href="https://www.coursera.org/account/accomplishments/verify/7GHUQ3GLKQYF" target="_blank"
+                            rel="noopener">Certificate</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="certification-header">
+                        <h3 class="certification-title">
+
+
+                            Getting Started with AWS Machine Learning</h3>
+                    </div>
+                    <div class="certification-meta">
+                        <span>Coursera | AWS · Aug 2022</span>
+                        <a class="certification-link"
+                            href="https://www.coursera.org/account/accomplishments/verify/PK8H8MS63HQF" target="_blank"
+                            rel="noopener">Certificate</a>
+                    </div>
+                </div>
+
+
+
+                <div class="card">
+                    <div class="certification-header">
+                        <h3 class="certification-title">
+
+                            DeepLearning.AI TensorFlow Developer Certificate</h3>
+                    </div>
+                    <div class="certification-meta">
+                        <span>Coursera | Deeplearning.AI · Aug 2022</span>
+                        <a class="certification-link"
+                            href="https://www.coursera.org/account/accomplishments/professional-cert/2CXCPAX5GS4Y"
+                            target="_blank" rel="noopener">Certificate</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="certification-header">
+                        <h3 class="certification-title">
+                            Generative Deep Learning with TensorFlow</h3>
+                    </div>
+                    <div class="certification-meta">
+                        <span>Coursera | Deeplearning.AI · Sep 2023</span>
+                        <a class="certification-link"
+                            href="https://www.coursera.org/account/accomplishments/certificate/CSEFTS8Y58JM"
+                            target="_blank" rel="noopener">Certificate</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="certification-header">
+                        <h3 class="certification-title">
+
+                            TensorFlow Advanced Techniques Specialization</h3>
+                    </div>
+                    <div class="certification-meta">
+                        <span>Coursera | Deeplearning.AI · Sep 2023</span>
+                        <a class="certification-link"
+                            href="https://www.coursera.org/account/accomplishments/specialization/certificate/288E9DAR43KG"
+                            target="_blank" rel="noopener">Certificate</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="certification-header">
+                        <h3 class="certification-title">
+
+                            Advanced Computer Vision with TensorFlow</h3>
+                    </div>
+                    <div class="certification-meta">
+                        <span>Coursera | Deeplearning.AI · Sep 2023</span>
+                        <a class="certification-link"
+                            href="https://www.coursera.org/account/accomplishments/certificate/YWBM25UMUPGQ"
+                            target="_blank" rel="noopener">Certificate</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="certification-header">
+                        <h3 class="certification-title">
+
+
+                            Introduction to TensorFlow for Artificial Intelligence, Machine Learning, and Deep Learning
+                        </h3>
+                    </div>
+                    <div class="certification-meta">
+                        <span>Coursera | Deeplearning.AI · Jul 2022</span>
+                        <a class="certification-link"
+                            href="https://www.coursera.org/account/accomplishments/verify/Z8FHSAJD6TZZ" target="_blank"
+                            rel="noopener">Certificate</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="certification-header">
+                        <h3 class="certification-title">
+
+
+                            Convolutional Neural Networks in TensorFlow</h3>
+                    </div>
+                    <div class="certification-meta">
+                        <span>Coursera | Deeplearning.AI · Aug 2022</span>
+                        <a class="certification-link"
+                            href="https://www.coursera.org/account/accomplishments/verify/53Q6QU69KBGA" target="_blank"
+                            rel="noopener">Certificate</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="certification-header">
+                        <h3 class="certification-title">
+
+
+                            Natural Language Processing in TensorFlow</h3>
+                    </div>
+                    <div class="certification-meta">
+                        <span>Coursera | Deeplearning.AI · Sep 2023</span>
+                        <a class="certification-link"
+                            href="https://www.coursera.org/account/accomplishments/verify/4HZGGPBDP23C" target="_blank"
+                            rel="noopener">Certificate</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="certification-header">
+                        <h3 class="certification-title">
+                            Sequences, Time Series, and Prediction</h3>
+                    </div>
+                    <div class="certification-meta">
+                        <span>Coursera | Deeplearning.AI · Aug 2022</span>
+                        <a class="certification-link"
+                            href="https://www.coursera.org/account/accomplishments/verify/2KZQ7SHM6NCS" target="_blank"
+                            rel="noopener">Certificate</a>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="certification-header">
+                        <h3 class="certification-title">
+                            AI for Everyone </h3>
+                    </div>
+                    <div class="certification-meta">
+                        <span>Coursera | Deeplearning.AI · Aug 2022</span>
+                        <a class="certification-link"
+                            href="https://www.coursera.org/account/accomplishments/verify/UJYAHNXG2LY6" target="_blank"
+                            rel="noopener">Certificate</a>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- AWARDS -->
+
+            <section id="awards">
+                <h2>Awards</h2>
+
+                <div class="card">
+                    <h3>3rd Position – Sumo Bot Challenge</h3>
+                    <p>March 2019 | AirTech ’19, Air University</p>
+                    <ul>
+                        <li>Secured 3rd place in the Sumo Bot competition among national engineering teams,
+                            demonstrating mechanical hardware design and through eliminating opponent robots.</li>
+                        <li>Served on the event management team, contributing to logistics and coordination of AirTech.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>1st Position – Culture Representation</h3>
+                    <p>February 2020 | AirFest ’20, Air University</p>
+                    <ul>
+                        <li>Assigned to represent the culture and history of Hungary.</li>
+                        <li>Secured first place for the best stall, performance, costume design, and culture/history
+                            representation.</li>
+                    </ul>
+                </div>
+
+            </section>
+
+            <!-- VOLUNTEER -->
+
+            <section id="volunteer">
+                <h2>Volunteer Work</h2>
+
+                <div class="card">
+                    <h3>Rozgar (Livelihood) Drive</h3>
+                    <p>February 2017</p>
+                    <ul>
+                        <li>Collected funds for a Rozgar (Livelihood) drive and distributed sewing machines among
+                            needy transgender people to help them earn an honest living.</li>
+                    </ul>
+                </div>
+
+
+                <div class="card">
+                    <h3>Mrgalla Hills Cleanliness Drive</h3>
+                    <p>2017 - 2020</p>
+                    <ul>
+                        <li>Participated in a cleanliness drive to promote environmental awareness and hygiene in the
+                            Mrgalla Hills area. Particularly on the hiking trails. Picked up trash, installed bins and
+                            placed banners on the trails to raise awareness. This drive was conducted every year.</li>
+                    </ul>
+                </div>
+
+            </section>
+
+        </div>
+    </div>
+
+    <div class="project-modal" id="project-modal" aria-hidden="true">
+        <div class="modal-content">
+            <button class="modal-close" type="button" aria-label="Close project media">Close</button>
+            <button class="nav-btn prev" type="button" aria-label="Previous media">◀</button>
+            <button class="nav-btn next" type="button" aria-label="Next media">▶</button>
+            <div class="media-frame" id="project-media-frame"></div>
+            <div class="media-caption" id="project-media-caption"></div>
+        </div>
+    </div>
+
+    <div id="viewport-indicator" aria-hidden="true"></div>
+
+    <script>
+        const projectModal = document.getElementById("project-modal");
+        const projectMediaFrame = document.getElementById("project-media-frame");
+        const projectMediaCaption = document.getElementById("project-media-caption");
+        const projectCloseBtn = projectModal.querySelector(".modal-close");
+        const projectPrevBtn = projectModal.querySelector(".nav-btn.prev");
+        const projectNextBtn = projectModal.querySelector(".nav-btn.next");
+
+        let projectMediaList = [];
+        let projectMediaIndex = 0;
+
+        const parseProjectMedia = (raw) => {
+            if (!raw) return [];
+            return raw.split("|").map((item) => {
+                const [type, url, caption] = item.split(":");
+                return { type, url, caption: caption || "" };
+            });
+        };
+
+        const renderProjectMedia = () => {
+            projectMediaFrame.innerHTML = "";
+            if (!projectMediaList.length) return;
+            const { type, url, caption } = projectMediaList[projectMediaIndex];
+            if (type === "video") {
+                const video = document.createElement("video");
+                video.src = url;
+                video.controls = true;
+                projectMediaFrame.appendChild(video);
+            } else {
+                const img = document.createElement("img");
+                img.src = url;
+                img.alt = caption || "Project media";
+                projectMediaFrame.appendChild(img);
+            }
+            projectMediaCaption.textContent = caption || "";
+            projectPrevBtn.style.display = projectMediaList.length > 1 ? "block" : "none";
+            projectNextBtn.style.display = projectMediaList.length > 1 ? "block" : "none";
+        };
+
+        document.querySelectorAll(".project-media-btn").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                projectMediaList = parseProjectMedia(btn.dataset.media);
+                if (!projectMediaList.length) return;
+                projectMediaIndex = 0;
+                renderProjectMedia();
+                projectModal.classList.add("active");
+                projectModal.setAttribute("aria-hidden", "false");
+            });
+        });
+
+        const closeProjectModal = () => {
+            projectModal.classList.remove("active");
+            projectModal.setAttribute("aria-hidden", "true");
+            projectMediaFrame.innerHTML = "";
+            projectMediaCaption.textContent = "";
+        };
+
+        projectCloseBtn.addEventListener("click", closeProjectModal);
+        projectModal.addEventListener("click", (e) => {
+            if (e.target === projectModal) closeProjectModal();
+        });
+        projectPrevBtn.addEventListener("click", () => {
+            projectMediaIndex = (projectMediaIndex - 1 + projectMediaList.length) % projectMediaList.length;
+            renderProjectMedia();
+        });
+        projectNextBtn.addEventListener("click", () => {
+            projectMediaIndex = (projectMediaIndex + 1) % projectMediaList.length;
+            renderProjectMedia();
+        });
+
+        const certLogoMap = {
+            "hugging face": "logos/Hugging Face.png",
+            "coursera": "logos/Coursera.jpg",
+            "deeplearning.ai": "logos/DeepLearning.AI.png",
+            "google cloud": "logos/Google Cloud.png",
+            "aws": "logos/AWS.png",
+            "udemy": "logos/Udemy.jpg",
+            "university of alberta": "logos/University of Alberta.jpg"
+        };
+
+        const normalizeIssuer = (name) => name.toLowerCase().replace(/\s+/g, " ").trim();
+
+        document.querySelectorAll("#certifications .card").forEach((card) => {
+            if (card.classList.contains("certification-card")) return;
+            const metaSpan = card.querySelector(".certification-meta span");
+            if (!metaSpan) return;
+            const issuerPart = metaSpan.textContent.split("·")[0];
+            const issuers = issuerPart.split("|").map((s) => s.trim()).filter(Boolean);
+            const logoData = issuers
+                .map((issuer) => {
+                    const normalized = normalizeIssuer(issuer);
+                    const src = certLogoMap[normalized];
+                    return src ? { src, alt: `${issuer} logo` } : null;
+                })
+                .filter(Boolean);
+
+            if (!logoData.length) return;
+
+            const content = document.createElement("div");
+            content.className = "cert-content";
+            while (card.firstChild) {
+                content.appendChild(card.firstChild);
+            }
+
+            const logoWrap = document.createElement("div");
+            logoWrap.className = "cert-logos";
+            logoData.forEach((logo) => {
+                const img = document.createElement("img");
+                img.className = "cert-logo";
+                img.src = logo.src;
+                img.alt = logo.alt;
+                img.loading = "lazy";
+                logoWrap.appendChild(img);
+            });
+
+            card.classList.add("certification-card");
+            card.appendChild(logoWrap);
+            card.appendChild(content);
+        });
+
+        const viewportIndicator = document.getElementById("viewport-indicator");
+        const updateViewportIndicator = () => {
+            if (!viewportIndicator) return;
+            viewportIndicator.textContent = `w:${window.innerWidth}px`;
+        };
+        updateViewportIndicator();
+        window.addEventListener("resize", updateViewportIndicator);
+    </script>
+
+</body>
+
+</html>
