@@ -106,7 +106,7 @@
             align-items: center;
             padding: 30px var(--side-gap) 0;
             max-width: calc(var(--panel-width) + var(--main-width) + (var(--side-gap) * 2));
-            margin: 0 auto;
+            margin: -40px auto 0;
         }
 
         /* PROFILE IMAGE */
@@ -258,6 +258,7 @@
                 row-gap: 22px;
                 padding: 24px var(--side-gap) 0;
                 max-width: none;
+                margin-top: 0;
             }
 
             .intro-text {
@@ -497,6 +498,34 @@
             }
         }
 
+        @media (min-width: 1401px) {
+            .intro-grid {
+                grid-template-rows: 160px auto auto;
+                row-gap: 8px;
+                padding-top: 20px;
+            }
+
+            .hero-right {
+                grid-row: 1 / 4;
+                display: grid;
+                grid-template-rows: 160px auto auto;
+                align-items: center;
+                row-gap: 12px;
+            }
+
+            .intro-text {
+                grid-row: 1;
+                align-self: center;
+                margin-top: 0;
+            }
+
+            .intro-subtext {
+                grid-row: 2;
+                align-self: center;
+                margin-top: 0;
+            }
+        }
+
 
         /* ===== HEARTBEAT HI ===== */
 
@@ -569,6 +598,20 @@
             flex-direction: column;
             align-items: center;
             gap: 18px;
+        }
+
+        @media (min-width: 1401px) {
+            .profile-link {
+                grid-row: 1;
+            }
+
+            .cv-button {
+                grid-row: 2;
+            }
+
+            .contact-open {
+                grid-row: 3;
+            }
         }
 
         /* typing */
@@ -1301,10 +1344,13 @@
             <div id="contact-modal" class="contact-modal" aria-hidden="true">
                 <a href="#" class="modal-close" aria-label="Close contact">Close</a>
                 <div class="modal-content">
-                    <p>Reach out directly:</p>
+                    <p>Reach Out to me:</p>
                     <div class="contact-actions">
-                        <a class="contact-button" href="tel:+92XXXXXXXXXX">Call: +92-XXX-XXXXXXX</a>
-                        <a class="contact-button" href="mailto:youremail@example.com">Email: youremail@example.com</a>
+
+                        <a class="contact-button" href="mailto:mugheerasaleem29@gmail.com">Email:
+                            mugheerasaleem29@gmail.com</a>
+                        <a class="contact-button" href="tel:+923344076565">Call: +92-334-4076565</a>
+
                     </div>
                 </div>
             </div>
